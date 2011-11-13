@@ -1,0 +1,8 @@
+
+*.tmproj
+*.pyc
+solextension/server_tools/
+solextension/public/
+solextension/log/
+solextension/db.sqlite
+*.DS_Store

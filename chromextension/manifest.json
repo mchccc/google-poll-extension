@@ -1,0 +1,29 @@
+{
+	"name": "solextension",
+	"version": "0.61",
+	"description": "Making sunshine.",
+	"icons": { "48": "icon_talk_48.png", "128": "icon_talk_128.png" },
+	"content_security_policy": "default-src script-src 'self' 'unsafe-inline' http://localhost:8000",
+	"page_action" : {
+		"default_icon" : "icon_talk_19.png",
+		"default_popup": "popup.html"
+	},
+	"background_page": "background.html",
+	"permissions": [
+		"tabs",
+		"http://localhost:8000/"
+	],
+	"content_scripts": [
+		{
+			"matches": [
+				"http://*.google.com/search*",
+				"https://*.google.com/search*",
+				"http://*.google.it/search*",
+				"https://*.google.it/search*"
+			],
+			"js": ["jquery.js", "date.format.js", "sole.js"],
+			"css": ["sole.css"],
+			"run_at": "document_idle"
+		}
+	]
+}

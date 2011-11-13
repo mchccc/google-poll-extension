@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+		<link href="sole.css" type="text/css" rel="stylesheet" />
+		<script src="jquery.js" type="text/javascript"></script>
+		<script type="text/javascript">
+			function parseBool(str) {
+				if ("false" === str)
+					return false;
+				else if ("true" === str)
+					return true;
+			}
+
+			$(document).ready(function(){
+				var user_id = localStorage['user_id'];
+				var debug = localStorage['debug'];
+				if(typeof user_id != 'undefined'){
+					$("#user_id").val(user_id);
+				}
+				if(typeof debug != 'undefined'){
+					$("#debug").prop('checked', parseBool(debug));
+				}
+
+				$("#user_id").bind('keyup', function(event) {
+					localStorage['user_id'] = $("#user_id").val();
+				});
+				$("#debug").bind('change', function(event) {
+					localStorage['debug'] = $("#debug").prop('checked');
+				});
+
+//				$("#submit_button").bind('click', function(event) {
+//					localStorage['user_id'] = $("#user_id").val();
+//					localStorage['debug'] = $("#debug").prop('checked');
+//					if(localStorage['user_id'] == $("#user_id").val() &&
+//							parseBool(localStorage['debug']) == $("#debug").prop('checked'))
+//						$("#checkmark").css('visibility','visible').hide().fadeIn();
+//				});
+//				$("#user_id").keypress(function (e) {
+//					if ((e.which && e.which == 13) || (e.keyCode && e.keyCode == 13)) {
+//						$('#submit_button').click();
+//					};
+//				});
+			});
+		</script>
+	</head>
+	<body>
+		<div id="user_input">
+			<input type="text" id="user_id" />
+<!--			<input type="button" value="okay" id="submit_button" />
+			<img src="checkmark.jpg" id="checkmark" />
+-->			<div id="debug_box">
+				<input type='checkbox' name='solenpopup' id='debug' />Show data being sent
+			</div>
+		</div>
+	</body>
+</html>

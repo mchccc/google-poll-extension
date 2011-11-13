@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<script>
+			chrome.extension.onRequest.addListener(
+				function(request, sender, sendResponse) {
+					response = {};
+					if (request) {
+						if (request.localstorage && request.localstorage == "user_id")
+							response['user_id'] = localStorage.user_id ;
+						if (request.debug && request.debug == "debug")
+							response['debug'] = localStorage.debug;
+					}
+					chrome.pageAction.show(sender.tab.id);
+					sendResponse(response);
+				}
+			);
+		</script>
+	</head>
+	<body>
+	</body>
+</html>
