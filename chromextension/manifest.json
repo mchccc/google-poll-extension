@@ -1,28 +1,38 @@
 {
 	"name": "solextension",
-	"version": "0.61",
-	"description": "Making sunshine.",
-	"icons": { "48": "icon_talk_48.png", "128": "icon_talk_128.png" },
-	"content_security_policy": "default-src script-src 'self' 'unsafe-inline' http://localhost:8000",
+	"version": "0.99",
+	"description": "Polling google users since 2011.",
+	"homepage_url": "https://github.com/cicuz/google-poll-extension",
+	"icons": {	"48": "/resources/images/icon_talk_48.png",
+				"128": "/resources/images/icon_talk_128.png" },
+	"content_security_policy": "default-src script-src 'self' 'unsafe-inline' http://cico.alwaysdata.net",
 	"page_action" : {
-		"default_icon" : "icon_talk_19.png",
+		"default_icon" : "/resources/images/icon_talk_19.png",
 		"default_popup": "popup.html"
 	},
 	"background_page": "background.html",
 	"permissions": [
 		"tabs",
-		"http://localhost:8000/"
+		"http://cico.alwaysdata.net/"
 	],
 	"content_scripts": [
 		{
 			"matches": [
+				"http://*.google.com/*",
+				"https://*.google.com/*",
+				"http://*.google.it/*",
+				"https://*.google.it/*",
 				"http://*.google.com/search*",
 				"https://*.google.com/search*",
 				"http://*.google.it/search*",
 				"https://*.google.it/search*"
 			],
-			"js": ["jquery.js", "date.format.js", "sole.js"],
-			"css": ["sole.css"],
+			"js": [
+				"/resources/scripts/jquery.js",
+				"/resources/scripts/date.format.js",
+				"/resources/scripts/sole.js"
+			],
+			"css": ["/resources/css/sole.css"],
 			"run_at": "document_idle"
 		}
 	]

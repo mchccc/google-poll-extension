@@ -1,0 +1,59 @@
+#solextension, #solextension_old {
+	display: none;
+	margin-top: 4px;
+	padding: 5px 15px;
+	background: #bbbbbb;
+	border-radius: 8px;
+	box-shadow: 4px 4px 4px #333;
+}
+#solextension strong, #solextension a {
+	display: block;
+	margin: 10px 0px;
+}
+#solextension input {
+	margin-right: 6px;
+	border-radius: 4px;
+}
+#reason_text {
+	width: 220px;
+}
+#reason_text::-webkit-input-placeholder {
+	color:#333;
+}
+#anchor {
+	height: 36px;
+}
+#anchor a {
+	float: left;
+}
+#ajax-loader {
+	width: 24px;
+	margin-top: 6px;
+	margin-left: 8px;
+	display: none;
+}
+
+/* POPUP */
+
+#user_input {
+	width: 110px;
+	margin: 0px;
+}
+#user_id {
+	width: 104px;
+	margin: 4px 10px 4px 0px;
+}
+#info_box {
+	margin-bottom: 2px;
+	font-size: 11px;
+	display: none;
+}
+#debug_box {
+	margin-top: 2px;
+	font-size: 10px;
+	display: none;
+}
+#debug_box input {
+	margin: 2px 4px 0px 5px;
+	float: left;
+}

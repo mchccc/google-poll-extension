@@ -16,3 +16,14 @@ def main_page(request):
 			'main_page.html',
 			variables,
 		)
+
+@csrf_exempt
+def firstrun_page(request):
+	variables = RequestContext(request, {
+		'reports': FirstrunReport.objects.all(),
+	})
+
+	return render_to_response(
+			'main_page.html',
+			variables,
+		)

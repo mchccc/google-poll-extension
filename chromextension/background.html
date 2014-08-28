@@ -2,15 +2,32 @@
 <html>
 	<head>
 		<script>
+			function parseBool(str) {
+				if ("false" === str)
+					return false;
+				else if ("true" === str)
+					return true;
+			}
+
 			chrome.extension.onRequest.addListener(
 				function(request, sender, sendResponse) {
 					response = {};
 					if (request) {
-						if (request.localstorage && request.localstorage == "user_id")
-							response['user_id'] = localStorage.user_id ;
+						if (request.localstorage && request.localstorage == "user_id") {
+							response['user_id'] = localStorage.user_id;
+							response['firstrun'] = localStorage[localStorage.user_id];
+						}
 						if (request.debug && request.debug == "debug")
 							response['debug'] = localStorage.debug;
+						if (request.firstrun)
+							if (request.set)
+								localStorage[request.firstrun] = false;
+						if (request.hp)
+							localStorage['hp'] = true;
+						else
+							localStorage['hp'] = false;
 					}
+					response['loading'] = chrome.extension.getURL('/resources/images/ajax-loader.gif');
 					chrome.pageAction.show(sender.tab.id);
 					sendResponse(response);
 				}
